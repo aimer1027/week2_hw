@@ -23,7 +23,7 @@ public class Peer
     ServerInfo serverInfo ; // store server node info
     Map<String , FileNode> fileHashMap ; // this list is used to store remote peer's
                                         // file on this server host
-
+  ;
 
     public Peer ( String serverName , String ip , String port )
     {
