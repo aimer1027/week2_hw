@@ -10,6 +10,13 @@ public class ServerInfo
     String ip ;
     String port ;
 
+    public ServerInfo ( String hostname , String ip , String port )
+    {
+        this.hostname = hostname ;
+        this.ip  = ip ;
+        this.port = port ;
+    }
+
     public void setHostname ( String hostname )
     {
         this.hostname = hostname ;
