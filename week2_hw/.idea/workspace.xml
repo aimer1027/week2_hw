@@ -2,10 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="771dc45f-0d96-43da-a3fc-23a3688053bc" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/org/kylin/zhang/p2pNetwork/peer/util/FileNode.java" afterPath="$PROJECT_DIR$/src/main/java/org/kylin/zhang/p2pNetwork/peer/util/FileNode.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/org/kylin/zhang/p2pNetwork/peer/Peer.java" afterPath="$PROJECT_DIR$/src/main/java/org/kylin/zhang/p2pNetwork/peer/Peer.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/org/kylin/zhang/p2pNetwork/peer/SelfNode.java" afterPath="$PROJECT_DIR$/src/main/java/org/kylin/zhang/p2pNetwork/peer/SelfNode.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/java/Self_file_generator_tester.java" afterPath="$PROJECT_DIR$/src/test/java/Self_file_generator_tester.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="week2_hw.iws" />
@@ -53,8 +49,8 @@
       <file leaf-file-name="FileNode.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/org/kylin/zhang/p2pNetwork/peer/util/FileNode.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.59365994">
-              <caret line="38" column="38" selection-start-line="38" selection-start-column="38" selection-end-line="38" selection-end-column="38" />
+            <state vertical-scroll-proportion="0.48991355">
+              <caret line="36" column="0" selection-start-line="36" selection-start-column="0" selection-end-line="36" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -673,7 +669,13 @@
       <option name="project" value="LOCAL" />
       <updated>1436279509623</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="file generator done, traverse is done ,&#10;my computer breakdown frequently recently ,&#10;so i have to push as often as i could">
+      <created>1436280575707</created>
+      <option name="number" value="00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1436280575707</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -737,7 +739,8 @@
     <MESSAGE value="first commit with idea" />
     <MESSAGE value="second commit the source file" />
     <MESSAGE value="file generator done" />
-    <option name="LAST_COMMIT_MESSAGE" value="file generator done" />
+    <MESSAGE value="file generator done, traverse is done ,&#10;my computer breakdown frequently recently ,&#10;so i have to push as often as i could" />
+    <option name="LAST_COMMIT_MESSAGE" value="file generator done, traverse is done ,&#10;my computer breakdown frequently recently ,&#10;so i have to push as often as i could" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -967,8 +970,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/org/kylin/zhang/p2pNetwork/peer/util/FileNode.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.59365994">
-          <caret line="38" column="38" selection-start-line="38" selection-start-column="38" selection-end-line="38" selection-end-column="38" />
+        <state vertical-scroll-proportion="0.48991355">
+          <caret line="36" column="0" selection-start-line="36" selection-start-column="0" selection-end-line="36" selection-end-column="0" />
           <folding />
         </state>
       </provider>
