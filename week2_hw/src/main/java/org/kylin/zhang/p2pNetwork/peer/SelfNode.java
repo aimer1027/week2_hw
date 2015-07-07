@@ -1,6 +1,7 @@
 package org.kylin.zhang.p2pNetwork.peer;
 
 import org.kylin.zhang.config.* ;
+import org.kylin.zhang.p2pNetwork.peer.util.FileNode ;
 import java.io.* ;
 import java.util.* ;
 
@@ -32,7 +33,7 @@ public class SelfNode extends Peer
 
         String data_path  = ConfigInfo.PRO_MAIN_PATH +"/Data/";
         Random random = new Random() ;
-
+        String lastLine = "You are the best!" ;
 
         for ( int i = 0 ; i < num ; i++ )
         {
@@ -40,7 +41,7 @@ public class SelfNode extends Peer
 
             // get random long as the random file length
             long random_len = random.nextInt(max)%(max -min +1) + min ;
-            byte [] data = new byte[(int)random_len] ;
+            byte [] data = new byte[(int)random_len+lastLine.getBytes().length ] ;
 
             File file = new File ( data_path + file_name) ;
 
@@ -52,10 +53,14 @@ public class SelfNode extends Peer
 
             buf.write( new String (data));
             buf.newLine();
-            buf.write("You are the best!") ; // end of the file
+            buf.write(lastLine) ; // end of the file
 
             buf.flush() ;
             buf.close () ;
+
+            FileNode fNode = new FileNode (file.getAbsolutePath() , file.length() , true ) ;
+
+            this.fileHashMap.put(file_name , fNode ) ;
         }
     }
 }

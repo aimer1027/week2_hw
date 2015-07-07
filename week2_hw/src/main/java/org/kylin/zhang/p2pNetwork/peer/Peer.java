@@ -33,7 +33,24 @@ public class Peer
         this.fileHashMap = new HashMap<String , FileNode> () ;
     }
 
+    public void printFileMap ()
+    {
+        Iterator iter = fileHashMap.keySet().iterator() ;
 
+        while ( iter.hasNext())
+        {
+            Object key = (String ) iter.next() ;
+            Object val = (FileNode) fileHashMap.get(key)  ;
+
+            System.out.println("---------------------------------------------------------------------------------") ;
+            System.out.println ("key  "+ key ) ;
+            System.out.println ("value "+ val ) ;
+            System.out.println("---------------------------------------------------------------------------------") ;
+        }
+
+
+
+    }
 
 
 }

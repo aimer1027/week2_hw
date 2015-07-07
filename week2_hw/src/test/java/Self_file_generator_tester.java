@@ -16,5 +16,6 @@ public class Self_file_generator_tester
         SelfNode selfNode = new SelfNode() ;
 
         selfNode.localFileGenerator();
+        selfNode.printFileMap();
     }
 }
