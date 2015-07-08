@@ -50,9 +50,14 @@ public class NettyServer
         connected = false ;
         network = testNetwork ;
         this.localSocketInfo =
-                new SocketInfo (ConfigInfo.SERVER_IP , ConfigInfo.SERVER_PORT ) ;
+                new SocketInfo (ConfigInfo.SERVER_NAME ,ConfigInfo.SERVER_IP , ConfigInfo.SERVER_PORT ) ;
 
 
+    }
+
+    public SocketInfo getLocalSocketInfo()
+    {
+        return this.localSocketInfo ;
     }
 
     private void  initNettyServer ()

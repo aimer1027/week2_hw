@@ -10,25 +10,36 @@ import java.net.InetSocketAddress ;
 public class SocketInfo
 {
 
+    String serverName ;
+    String ip ;
+    String port ;
     long serverId ; // serverId just like UID of each server
     InetSocketAddress socketAddress ;
 
-    public SocketInfo ( String ip , String port  )
+    public SocketInfo ( String serverName , String ip , String port  )
     {
-
+        this.serverName = serverName ;
+        this.ip = ip ;
+        this.port = port ;
         this.socketAddress = new InetSocketAddress( ip , Short.parseShort( port )) ;
         this.serverId = ServerId.getServerID(ip , port) ;
     }
 
-    public SocketInfo (ServerInfo info )
+    public SocketInfo ( SocketInfo info  )
     {
-        this(info.getIp() , info.getPort()) ;
+        this.serverName = info.getServerName() ;
+        this.ip  = info.getIp() ;
+        this.port = info.getPort() ;
     }
+
 
     public long getServerId()
     {
         return this.serverId ;
     }
+    public String getIp () {return this.ip ;}
+    public String getPort () {return this.port ;}
+    public String getServerName () {return this.serverName ;}
 
     boolean compareServerId ( SocketInfo sockId) throws Exception
     {

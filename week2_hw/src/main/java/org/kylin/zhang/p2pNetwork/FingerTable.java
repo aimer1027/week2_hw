@@ -8,32 +8,32 @@ import org.kylin.zhang.p2pNetwork.peer.* ;
  */
 public class FingerTable
 {
-    Map<String , Peer> fingerTable ;
+    Map<String , SocketInfo> fingerTable ;
 
     public FingerTable ()
     {
-        this.fingerTable = new HashMap<String, Peer>() ;
+        this.fingerTable = new HashMap<String, SocketInfo>() ;
     }
 
-    public Peer findPeerNodeByZkPath ( String zk_path )
+    public SocketInfo findPeerNodeByZkPath ( String zk_path )
     {
-        Peer dPeer = (Peer)this.fingerTable.get(zk_path) ;
+        SocketInfo socketInfo = (SocketInfo)this.fingerTable.get(zk_path) ;
 
-        if ( dPeer != null )
-            return dPeer ;
+        if ( socketInfo != null )
+            return socketInfo ;
 
         System.out.println("can not find peer node with zookeeper path "+ zk_path ) ;
-        return dPeer ;
+        return null ;
     }
 
-    public void addNewRecord ( String zk_path , Peer peer )
+    public void addNewRecord ( String zk_path , SocketInfo socketInfo )
     {
         if (findPeerNodeByZkPath( zk_path) != null )
         {
             System.out.println("path already have znode ") ;
             return ;
         }
-        this.fingerTable.put(zk_path , peer ) ;
+        this.fingerTable.put(zk_path , socketInfo ) ;
     }
 
     public void removeRecord(String zk_path )
