@@ -27,7 +27,7 @@ public class ClientReceiveMessage extends ChannelInboundHandlerAdapter
         System.out.println("message received from server") ;
         System.out.println((Message)msg) ;
 
-        ctx.close() ;
+
     }
 
     @Override

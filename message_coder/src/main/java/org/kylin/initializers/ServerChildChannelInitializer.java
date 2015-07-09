@@ -21,7 +21,8 @@ public class ServerChildChannelInitializer extends ChannelInitializer<NioServerS
     protected void initChannel ( NioServerSocketChannel ch )
         throws Exception
     {
-        ch.pipeline().addLast("encoder ", new Encoder())
+        ch.pipeline() .addLast("encoder ", new Encoder())
+
                 .addLast("sender" , new ServerHandler () ) ;
 
 

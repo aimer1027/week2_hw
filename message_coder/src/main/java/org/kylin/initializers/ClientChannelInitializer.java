@@ -20,9 +20,8 @@ public class ClientChannelInitializer extends ChannelInitializer<SocketChannel>
     protected void initChannel( SocketChannel ch ) throws Exception
     {
         ch.pipeline()
+                .addLast( new Decoder ()    , new ClientReceiveMessage ()) ;
 
-
-                .addLast("client handler", new ClientReceiveMessage()) .addLast("decoder" , new Decoder ());
 
     }
 }

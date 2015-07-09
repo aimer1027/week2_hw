@@ -1,6 +1,7 @@
 package org.kylin.message;
 
 import io.netty.buffer.ByteBuf ;
+import io.netty.buffer.Unpooled;
 import io.netty.channel.ChannelHandlerContext ;
 import io.netty.handler.codec.MessageToByteEncoder ;
 import io.netty.util.CharsetUtil ;
@@ -14,6 +15,7 @@ public class Encoder extends MessageToByteEncoder<Message>
     protected void encode ( ChannelHandlerContext ctx, Message msg , ByteBuf out)
         throws Exception
     {
+        out = Unpooled.buffer(msg.getLength()) ;
         out.writeByte( msg.getType().getByte()) ;
         out.writeShort( msg.getLength() ) ;
 

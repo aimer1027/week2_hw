@@ -2,14 +2,17 @@ package org.kylin.server;
 
 import io.netty.bootstrap.Bootstrap ;
 import io.netty.bootstrap.ServerBootstrap ;
-import io.netty.channel.ChannelFuture ;
+import io.netty.channel.*;
 import io.netty.channel.nio.NioEventLoopGroup ;
 import io.netty.channel.socket.nio.NioServerSocketChannel ;
 import io.netty.channel.socket.nio.NioSocketChannel ;
 
+import org.kylin.handlers.tests.EchoClientHandler;
 import org.kylin.initializers.ClientChannelInitializer;
 import org.kylin.initializers.ServerBossChannelInitializer;
 import org.kylin.initializers.ServerChildChannelInitializer;
+
+import io.netty.channel.socket.SocketChannel ;
 
 
 /**
@@ -38,11 +41,28 @@ public class NettyServer
     public void initServer ( String ip , String port )
     {
         ServerBootstrap bootstrap = new ServerBootstrap () ;
-        bootstrap.group(bossGroup , workerGroup )
-                .channel(NioServerSocketChannel.class)
-                .handler( new ServerBossChannelInitializer())
-                .childHandler( new ServerChildChannelInitializer())
-                .bind(ip , Short.parseShort( port )) ;
+        ChannelFuture f ;
+
+        try
+        {
+             f = bootstrap.group(bossGroup, workerGroup)
+                    .channel(NioServerSocketChannel.class)
+                    .option(ChannelOption.SO_BACKLOG, 100)
+                    .handler(new ServerBossChannelInitializer())
+                    .childHandler(new ServerChildChannelInitializer())
+                    .bind(ip, Short.parseShort(port)).sync();
+
+            f.channel().closeFuture().sync() ;
+        }
+        catch ( Exception e )
+        {
+            e.printStackTrace();
+        }
+        finally
+        {
+            this.bossGroup.shutdownGracefully() ;
+            this.workerGroup.shutdownGracefully() ;
+        }
     }
 
     public static void initClient ( String ip , String port ) {
@@ -52,6 +72,7 @@ public class NettyServer
         try {
             clientBootstrap.group(clientGroup)
                     .channel(NioSocketChannel.class)
+                    .option(ChannelOption.TCP_NODELAY, true)
                     .handler(new ClientChannelInitializer());
 
             ChannelFuture chf = clientBootstrap.connect(ip, Short.parseShort(port)).sync();
@@ -69,17 +90,53 @@ public class NettyServer
     }
 
 
+    public void invokeEchoSERVER ( String ip , String port )
+    {
+
+    }
+
+    public static void invokeEchoClient ( String ip , String port )
+    {
+        EventLoopGroup group = new NioEventLoopGroup() ;
+
+        try
+        {
+            Bootstrap b = new Bootstrap() ;
+
+            b.group(group)
+                    .channel(NioSocketChannel.class)
+                    .option(ChannelOption.TCP_NODELAY , true)
+                    .handler( new ChannelInitializer<SocketChannel>()
+                    {
+                        @Override
+                        public void initChannel(SocketChannel ch )throws Exception
+                        {
+
+                        }
+                    }) ;
+        }
+        catch(Exception e )
+        {
+
+        }
+        finally
+        {
+            group.shutdownGracefully() ;
+        }
+    }
+
+
     public static void main ( String [] args ) throws Exception
     {
         String ip = "10.2.0.27" ;
         String port = "9989" ;
         NettyServer server = new NettyServer () ;
 
-        server.initServer(ip , port );
+        server.initServer(ip, port);
 
 
-        Thread.sleep(60) ;
-        System.out.println("client send connect request to server ") ;
-       NettyServer.initClient(ip, port );
+//        Thread.sleep(60) ;
+ //       System.out.println("client send connect request to server ") ;
+   //    NettyServer.initClient(ip, port );
     }
 }
