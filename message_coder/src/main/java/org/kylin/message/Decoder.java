@@ -22,6 +22,8 @@ public class Decoder  extends ByteToMessageDecoder
     {
         Message msg = new Message() ;
 
+        System.out.println( in.isReadable()) ;
+
         if ( in.readableBytes() < 3 )
         {
             System.out.println("message data wrong") ;
